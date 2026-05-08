@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/LLM/Local_model/BAAI/**)",
+      "Read(//mnt/d/LLM/Local_model/BAAI/**)",
+      "Read(//mnt/c/Users/89562/PycharmProjects/**)",
+      "Bash(.venv/Scripts/pip show *)",
+      "Bash(.venv/Scripts/pip install *)"
+    ]
+  }
+}
