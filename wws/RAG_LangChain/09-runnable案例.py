@@ -62,15 +62,21 @@ class TravelQASystem:
         """
 
         # 初始化语言模型
-        self.llm = ChatOpenAI(api_key=openai_api_key,
-                              base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-                              model="qwen-plus")
+        self.llm = ChatOpenAI(
+            api_key=os.getenv("DASHSCOPE_API_KEY"),
+            base_url="https://api.deepseek.com",
+            model="deepseek-chat",
+        )
 
         # 初始化搜索工具
         self.search = TavilySearch(tavily_api_key=serpapi_api_key)
 
         # 初始化嵌入模型
-        self.embeddings = HuggingFaceEmbeddings(model_name=embed_path)
+        # self.embeddings = HuggingFaceEmbeddings(model_name=embed_path)
+        self.embeddings = HuggingFaceEmbeddings(
+            model_name="BAAI/bge-small-zh-v1.5",
+            encode_kwargs={'normalize_embeddings': True},
+        )
 
         # 构建景点知识库
         self.attraction_data = [
